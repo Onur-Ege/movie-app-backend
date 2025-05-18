@@ -1,7 +1,7 @@
 package com.onurege.demo.data.detail.dto;
 
 public class AuthorDetails {
-    public String avatarPath;
+    public String avatar_path;
     public String name;
     public Double rating;
     public String username;
@@ -30,11 +30,11 @@ public class AuthorDetails {
         this.username = username;
     }
 
-    public String getAvatarPath() {
-        return avatarPath;
+    public String getAvatar_path() {
+        return avatar_path;
     }
 
-    public void setAvatarPath(String avatarPath) {
-        this.avatarPath = avatarPath;
+    public void setAvatar_path(String avatar_path) {
+        this.avatar_path = avatar_path;
     }
 }

@@ -73,10 +73,10 @@ public class MovieDetailMapper {
                         Review review = new Review();
                         review.setAuthor(formatEmptyValue(r.getAuthor(),""));
                         review.setContent(formatEmptyValue(r.getContent(),""));
-                        review.setCreatedAt(formatTimeStamp(r.getCreatedAt() != null ? r.getCreatedAt() : "0"));
+                        review.setCreatedAt(formatTimeStamp(r.getCreated_at() != null ? r.getCreated_at() : "0"));
                         review.setId(formatEmptyValue(r.getId(),""));
-                        review.setRating((r.getAuthorDetails() != null && r.getAuthorDetails().getRating() != null)
-                                ? r.getAuthorDetails().getRating()
+                        review.setRating((r.getAuthor_details() != null && r.getAuthor_details().getRating() != null)
+                                ? r.getAuthor_details().getRating()
                                 : 0.0);
                         return review;
                     })
@@ -132,7 +132,7 @@ public class MovieDetailMapper {
                     formatEmptyValue(dto.getName(),""),
                     genderRole,
                     formatEmptyValue(dto.getCharacter(),""),
-                    dto.getProfilePath()
+                    dto.getProfile_path()
             );
 
             result.add(cast);

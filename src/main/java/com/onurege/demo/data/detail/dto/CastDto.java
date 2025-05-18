@@ -12,7 +12,7 @@ public class CastDto {
     public Integer order;
     public String originalName;
     public Double popularity;
-    public String profilePath;
+    public String profile_path;
 
     public CastDto() {
     }
@@ -29,7 +29,7 @@ public class CastDto {
         this.order = order;
         this.originalName = originalName;
         this.popularity = popularity;
-        this.profilePath = profilePath;
+        this.profile_path = profilePath;
     }
 
     public Boolean getAdult() {
@@ -120,11 +120,11 @@ public class CastDto {
         this.popularity = popularity;
     }
 
-    public String getProfilePath() {
-        return profilePath;
+    public String getProfile_path() {
+        return profile_path;
     }
 
-    public void setProfilePath(String profilePath) {
-        this.profilePath = profilePath;
+    public void setProfile_path(String profile_path) {
+        this.profile_path = profile_path;
     }
 }

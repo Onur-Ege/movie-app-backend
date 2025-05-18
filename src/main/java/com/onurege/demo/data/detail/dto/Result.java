@@ -2,19 +2,19 @@ package com.onurege.demo.data.detail.dto;
 
 public class Result {
     public String author;
-    public AuthorDetails authorDetails;
+    public AuthorDetails author_details;
     public String content;
-    public String createdAt;
+    public String created_at;
     public String id;
-    public String updatedAt;
+    public String updated_at;
     public String url;
 
-    public String getUpdatedAt() {
-        return updatedAt;
+    public String getUpdated_at() {
+        return updated_at;
     }
 
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setUpdated_at(String updated_at) {
+        this.updated_at = updated_at;
     }
 
     public String getUrl() {
@@ -33,12 +33,12 @@ public class Result {
         this.id = id;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
+    public String getCreated_at() {
+        return created_at;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 
     public String getContent() {
@@ -49,12 +49,12 @@ public class Result {
         this.content = content;
     }
 
-    public AuthorDetails getAuthorDetails() {
-        return authorDetails;
+    public AuthorDetails getAuthor_details() {
+        return author_details;
     }
 
-    public void setAuthorDetails(AuthorDetails authorDetails) {
-        this.authorDetails = authorDetails;
+    public void setAuthor_details(AuthorDetails author_details) {
+        this.author_details = author_details;
     }
 
     public String getAuthor() {
