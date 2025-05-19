@@ -5,16 +5,26 @@ public class FavoriteRequest {
     private Integer tmdbId;
     private String imdbId;
     private String title;
+    private Integer rating;
 
 
     public FavoriteRequest() {
     }
 
-    public FavoriteRequest(int userId, String imdbId, Integer tmdbId, String title) {
+    public FavoriteRequest(int userId, String imdbId, Integer tmdbId, String title, Integer rating) {
         this.userId = userId;
         this.imdbId = imdbId;
         this.tmdbId = tmdbId;
         this.title = title;
+        this.rating = rating;
+    }
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
     }
 
     public String getImdbId() {

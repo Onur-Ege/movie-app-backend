@@ -1,6 +1,7 @@
 package com.onurege.demo.Repository;
 
 import com.onurege.demo.data.MovieNode;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,13 +19,20 @@ public interface UserRepository extends Neo4jRepository<MovieNode, Long> {
             m.imdbId = $imdbId,
             m.title = $title
         MERGE (u)-[r:RATED]->(m)
-        SET r.rating = 5
+        SET r.rating = $rating
         RETURN 'success' AS result
     """)
     Optional<String> createRatedRelation(
             @Param("userId") int userId,
             @Param("tmdbId") Integer tmdbId,
             @Param("imdbId") String imdbId,
-            @Param("title") String title
-            );
+            @Param("title") String title,
+            @Param("rating") Integer rating
+    );
+
+    @Query("""
+        MATCH (u:User {userId: $userId})-[r:RATED]->(m:Movie {tmdbId: $tmdbId})
+        RETURN r.rating
+    """)
+    Integer findUserRating(Integer userId, Integer tmdbId);
 }

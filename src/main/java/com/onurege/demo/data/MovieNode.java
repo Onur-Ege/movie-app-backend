@@ -17,4 +17,10 @@ public class MovieNode {
 
     @Property("imdbId")
     private String imdbId;
+
+    @Property("tmdbId")
+    private Integer tmdbId;
+
+    @Property("title")
+    private String title;
 }

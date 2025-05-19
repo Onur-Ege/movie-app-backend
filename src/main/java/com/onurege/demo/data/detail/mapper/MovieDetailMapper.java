@@ -127,6 +127,10 @@ public class MovieDetailMapper {
 
             String genderRole = (dto.getGender() != null && dto.getGender() == 2) ? "Actor" : "Actress";
 
+            if (dto.getProfile_path() == null){
+                dto.setProfile_path("/kOvh6paITOTaE7H1NnuTB01DiVV.jpg");
+            }
+
             Cast cast = new Cast(
                     dto.getId() != null ? dto.getId() : 0,
                     formatEmptyValue(dto.getName(),""),
