@@ -29,18 +29,6 @@ public class MovieController {
         return ResponseEntity.ok(movies);
     }
 
-    @GetMapping("/popular")
-    public ResponseEntity<List<MovieDto>> getPopularMovies(){
-        List<MovieDto> movies = tmdbService.getPopularMovies();
-        return ResponseEntity.ok(movies);
-    }
-
-    @GetMapping("/discover")
-    public ResponseEntity<List<MovieDto>> getDiscoverMovies(){
-        List<MovieDto> movies = tmdbService.getDiscoverMovies();
-        return ResponseEntity.ok(movies);
-    }
-
     @GetMapping("/{movieId}")
     public ResponseEntity<MovieDetail> getMovieDetail(@PathVariable int movieId) {
         MovieDetail response = tmdbService.fetchMovieDetail(movieId);

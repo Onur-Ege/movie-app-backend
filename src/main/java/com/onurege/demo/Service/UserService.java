@@ -9,12 +9,16 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final TmdbService tmdbService;
 
-    public UserService(UserRepository userRepository){
+    public UserService(UserRepository userRepository, TmdbService tmdbService){
+
         this.userRepository = userRepository;
+        this.tmdbService = tmdbService;
     }
 
     public boolean rateMovie(int userId, Integer tmdbId, String imdbId, String title, Integer rating) {
+        imdbId = tmdbService.fetchImdbIdFromTmdb(tmdbId);
         Optional<String> result = userRepository.createRatedRelation(userId, tmdbId, imdbId, title, rating);
         return result.isPresent();
     }

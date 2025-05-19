@@ -5,8 +5,8 @@ import com.onurege.demo.data.detail.dto.MovieDetailDto;
 import com.onurege.demo.data.detail.mapper.MovieDetailMapper;
 import com.onurege.demo.data.detail.model.MovieDetail;
 import com.onurege.demo.data.movie.model.MovieDto;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -48,6 +48,17 @@ public class TmdbService {
 
         MovieDetailDto dto = restTemplate.getForObject(url, MovieDetailDto.class);
         return mapper.map(dto);
+    }
+
+    public String fetchImdbIdFromTmdb(Integer tmdbId) {
+        String url = String.format("https://api.themoviedb.org/3/movie/%d/external_ids?api_key=%s", tmdbId, API_KEY);
+
+        try {
+            ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
+            return (String) response.getBody().get("imdb_id");
+        } catch (Exception e) {
+            return ""; // fallback
+        }
     }
 
     public MovieDto getMovieByImdbId(String imdbId){
