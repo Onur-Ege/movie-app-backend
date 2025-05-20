@@ -1,7 +1,7 @@
 package com.onurege.demo.data;
 
 public class FavoriteRequest {
-    private int userId;
+    private String userId;
     private Integer tmdbId;
     private String imdbId;
     private String title;
@@ -11,7 +11,7 @@ public class FavoriteRequest {
     public FavoriteRequest() {
     }
 
-    public FavoriteRequest(int userId, String imdbId, Integer tmdbId, String title, Integer rating) {
+    public FavoriteRequest(String userId, String imdbId, Integer tmdbId, String title, Integer rating) {
         this.userId = userId;
         this.imdbId = imdbId;
         this.tmdbId = tmdbId;
@@ -43,9 +43,9 @@ public class FavoriteRequest {
         this.title = title;
     }
 
-    public int getUserId() { return userId; }
+    public String getUserId() { return userId; }
     public Integer getTmdbId() { return tmdbId; }
 
-    public void setUserId(int userId) { this.userId = userId; }
+    public void setUserId(String userId) { this.userId = userId; }
     public void setTmdbId(Integer tmdbId) { this.tmdbId = tmdbId; }
 }

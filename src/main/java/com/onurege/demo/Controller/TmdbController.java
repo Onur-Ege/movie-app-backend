@@ -5,6 +5,7 @@ import com.onurege.demo.data.movie.model.MovieDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
@@ -27,6 +28,12 @@ public class TmdbController {
     @GetMapping("/discover")
     public ResponseEntity<List<MovieDto>> getDiscoverMovies() {
         return ResponseEntity.ok(tmdbService.getDiscoverMovies());
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<MovieDto>> searchMovies(@RequestParam String query) {
+        List<MovieDto> results = tmdbService.searchMovies(query);
+        return ResponseEntity.ok(results);
     }
 }
 

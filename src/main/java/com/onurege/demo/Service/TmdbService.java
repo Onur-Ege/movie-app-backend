@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriUtils;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class TmdbService {
@@ -59,6 +61,24 @@ public class TmdbService {
         } catch (Exception e) {
             return ""; // fallback
         }
+    }
+    public List<MovieDto> searchMovies(String query) {
+        String url = String.format(
+                "%s/search/movie?api_key=%s&query=%s",
+                BASE_URL, API_KEY, UriUtils.encodeQuery(query, "UTF-8")
+        );
+
+        ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
+        List<Map<String, Object>> results = (List<Map<String, Object>>) response.getBody().get("results");
+
+        return results.stream()
+                .sorted((m1, m2) -> {
+                    int voteCount1 = ((Number) m1.getOrDefault("vote_count", 0)).intValue();
+                    int voteCount2 = ((Number) m2.getOrDefault("vote_count", 0)).intValue();
+                    return Integer.compare(voteCount2, voteCount1); // descending
+                })
+                .map(this::mapToDto)
+                .toList();
     }
 
     public MovieDto getMovieByImdbId(String imdbId){

@@ -13,7 +13,7 @@ import org.springframework.data.neo4j.core.schema.Property;
 @AllArgsConstructor
 public class MovieNode {
     @Id
-    private Long id;
+    private String id;
 
     @Property("imdbId")
     private String imdbId;

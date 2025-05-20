@@ -10,13 +10,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MovieRepository extends Neo4jRepository<MovieNode, Long> {
+public interface MovieRepository extends Neo4jRepository<MovieNode, String> {
 
     @Query("""
         MATCH (:User {userId: $userId})-[r:RATED]->(m:Movie)
         WHERE r.rating = 5
         RETURN m.imdbId AS imdbId LIMIT 20
     """)
-    List<String> findImdbIdsOfFavMovies(@Param("userId") Long userId);
+    List<String> findImdbIdsOfFavMovies(@Param("userId") String userId);
 
 }

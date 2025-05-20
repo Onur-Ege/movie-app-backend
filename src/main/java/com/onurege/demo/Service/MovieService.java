@@ -20,7 +20,7 @@ public class MovieService {
         this.tmdbService = tmdbService;
     }
 
-    public List<MovieDto> getFavMovies(Long userId) {
+    public List<MovieDto> getFavMovies(String userId) {
         List<String> imdbIds = movieRepository.findImdbIdsOfFavMovies(userId);
 
         return imdbIds.stream()

@@ -28,7 +28,7 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<Integer> getUserRating(
-            @RequestParam Integer userId,
+            @RequestParam String userId,
             @RequestParam Integer tmdbId) {
 
         Integer rating = userService.getRating(userId, tmdbId);

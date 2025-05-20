@@ -24,7 +24,7 @@ public class MovieController {
     }
 
     @GetMapping("/favorites")
-    public ResponseEntity<List<MovieDto>> getRatedMovies(@RequestParam Long userId) {
+    public ResponseEntity<List<MovieDto>> getRatedMovies(@RequestParam String userId) {
         List<MovieDto> movies = movieService.getFavMovies(userId);
         return ResponseEntity.ok(movies);
     }
